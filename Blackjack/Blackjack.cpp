@@ -4,22 +4,45 @@
 #include <iostream>
 #include "Card.h"
 #include "Deck.h"
+#include "Player.h"
 
 int main()
 {
-    Card as("AS czerwony", 1);
-    Card dama("DAMA czerwony", 2);
+   
     
+    Player player("TEST"); 
+    Player player2("Test2");
     Deck deck;
     deck.init_deck();
     deck.print_deck();
-    std::unique_ptr<Card> card1 = deck.get_card();
-    std::cout << std::endl << card1->getName() << std::endl;
-    std::unique_ptr<Card> card2 = deck.get_card();
-    std::cout << std::endl << card2->getName() << std::endl;
-    card2 = deck.get_card();
-    std::cout << std::endl << card2->getName() << std::endl;
-    deck.print_deck();
+    
+    
+   
+    
+
+    for (int j = 0; j < 6; j++)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            //card1 = deck.get_card();
+            player.take_card(std::move(deck.get_card()));
+            
+            player2.take_card(std::move(deck.get_card()));
+        }
+        player.show_hand();
+        player2.show_hand();
+        deck.print_deck();
+
+
+    }
+    
+   
+
+
+
+    
+
+    
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
