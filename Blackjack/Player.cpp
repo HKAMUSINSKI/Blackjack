@@ -3,7 +3,7 @@
 void Player::count_hand()
 {
 	std::string name = hand.back()->getName();
-	if ((number_ACE > 1 ) & (name.compare(0, 3, "Ace") == 0))
+	if ((number_ACE > 1 ) and (name.compare(0, 3, "Ace") == 0))
 	{	
 		std::cout << "I will count this ACE as 1" <<std::endl;
 	hand.back()->setValue(1);
@@ -71,4 +71,36 @@ void Player::show_hand()
 	std::cout << "*****************End of hand***************" << std::endl;
 }
 
+///////////////////////////////////////////
 
+char Dealer::move()
+{
+	
+	if (power_hand() < 17) return 'h';
+	else
+	{
+		playing = false;
+		return 's';
+	}
+	
+	
+}
+
+
+///////////////////////////////////////////
+
+	char Human::move()
+	{
+		
+		char choice;
+
+		do
+		{
+			std::cout << " Your turn: press h -> hit or s -> stand" << std::endl;
+			choice = _getch();
+		} while ( !((choice == 's') or (choice == 'h')));
+
+		return choice;
+	
+	}
+	

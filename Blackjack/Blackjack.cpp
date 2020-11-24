@@ -5,13 +5,20 @@
 #include "Card.h"
 #include "Deck.h"
 #include "Player.h"
+#include <memory>
 
 int main()
 {
    
     
-    Player player("TEST"); 
-    Player player2("Test2");
+    //Dealer player("TEST");
+    //Human player2("Test2");
+    //std::unique_ptr<Dealer> player = std::make_unique<Dealer>();
+    //std::unique_ptr<Human> player2 = std::make_unique<Human>();
+
+    Player* player = new Dealer("test");
+    Player* player2 = new Human("test2");
+
     Deck deck;
     deck.init_deck();
     deck.print_deck();
@@ -25,19 +32,23 @@ int main()
         for (int i = 0; i < 5; i++)
         {
             //card1 = deck.get_card();
-            player.take_card(std::move(deck.get_card()));
+            player->take_card(std::move(deck.get_card()));
             
-            player2.take_card(std::move(deck.get_card()));
+            player2->take_card(std::move(deck.get_card()));
         }
-        player.show_hand();
-        player2.show_hand();
+        player->show_hand();
+        player2->show_hand();
         deck.print_deck();
+       
+        std::cout << player->move() << std::endl;
+        std::cout << player2->move() << std::endl;
+       
 
 
     }
     
-   
-
+    delete player;
+    delete player2;
 
 
     
