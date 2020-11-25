@@ -2,9 +2,7 @@
 //
 #pragma once
 #include <iostream>
-#include "Card.h"
-#include "Deck.h"
-#include "Player.h"
+#include "Table.h"
 #include <memory>
 
 int main()
@@ -16,39 +14,34 @@ int main()
     //std::unique_ptr<Dealer> player = std::make_unique<Dealer>();
     //std::unique_ptr<Human> player2 = std::make_unique<Human>();
 
-    Player* player = new Dealer("test");
-    Player* player2 = new Human("test2");
+    
+    
+    Dealer dealer("croupier");
 
-    Deck deck;
-    deck.init_deck();
-    deck.print_deck();
     
     
+    Table table;
+        
+    table.add_player(0, "AI Player1");
+    table.add_player(0, "AI Player2");
+    table.add_player(0, "AI Player3");
+    table.add_player(0, "AI Player4");
+    table.add_player(0, "AI Player5");
+    table.add_player(1, "Human player 1");
+    table.add_player(1, "Human player 2");
+    table.add_player(1, "Human player 3");
+    
+    table.show_players();
+    table.remove_player(3);
+    table.show_players();
+
+    std::cout<<"First round";
+    table.run();
+    std::cout<<"Second round";
+    table.run();
    
     
-
-    for (int j = 0; j < 6; j++)
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            //card1 = deck.get_card();
-            player->take_card(std::move(deck.get_card()));
-            
-            player2->take_card(std::move(deck.get_card()));
-        }
-        player->show_hand();
-        player2->show_hand();
-        deck.print_deck();
-       
-        std::cout << player->move() << std::endl;
-        std::cout << player2->move() << std::endl;
-       
-
-
-    }
     
-    delete player;
-    delete player2;
 
 
     

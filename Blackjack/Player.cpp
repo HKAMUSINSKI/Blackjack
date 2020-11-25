@@ -71,6 +71,11 @@ void Player::show_hand()
 	std::cout << "*****************End of hand***************" << std::endl;
 }
 
+std::string Player::get_name()
+{
+	return name;
+}
+
 ///////////////////////////////////////////
 
 char Dealer::move()
@@ -80,10 +85,18 @@ char Dealer::move()
 	else
 	{
 		playing = false;
+		Sleep(2000);
 		return 's';
+
 	}
 	
 	
+}
+
+std::string Dealer::first_card()
+{
+	std::string name = hand.front()->getName();
+	return name;
 }
 
 
@@ -100,6 +113,7 @@ char Dealer::move()
 			choice = _getch();
 		} while ( !((choice == 's') or (choice == 'h')));
 
+		if (choice =='s') playing = false;
 		return choice;
 	
 	}

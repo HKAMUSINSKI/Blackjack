@@ -4,6 +4,7 @@
 #include <memory>
 #include <iostream>
 #include <string>
+#include <windows.h>
 
 #include <conio.h>
 
@@ -34,6 +35,7 @@ public:
 	int power_hand();
 	void end_game();
 	void show_hand();
+	std::string get_name();
 	virtual char move() =0; // do przes³oniecia 
 
 };
@@ -43,10 +45,10 @@ class Dealer : public Player
 {
 public:
 	Dealer(std::string _name) { name = _name;};
-	Dealer() {};
+	Dealer() { name = "CROUPIER"; };
 	~Dealer() = default;
 	char move() override;
-
+	std::string first_card();
 };
 
 
