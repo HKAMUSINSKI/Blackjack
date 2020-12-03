@@ -48,6 +48,7 @@ int Player::power_hand()
 
 void Player::end_game()
 {
+	
 	playing = true;
 	hand_power = 0;
 	number_ACE = 0;

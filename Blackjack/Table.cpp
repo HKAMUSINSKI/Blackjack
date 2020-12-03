@@ -126,8 +126,10 @@ void Table::run()
 		}
 		i->end_game();
 	}
-
 	
+	dealer.end_game();
+
+	std::cout << "Press any key" << std::endl;
 	_getch();
 
 }

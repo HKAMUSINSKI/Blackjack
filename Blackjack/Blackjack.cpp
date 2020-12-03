@@ -5,40 +5,103 @@
 #include "Table.h"
 #include <memory>
 
+void choice_msg(char* choice)
+{
+    std::cout << "You have chosen: " << *choice << std::endl;
+    Sleep(400);
+    system("cls");
+}
+
 int main()
 {
+
    
-    
-    //Dealer player("TEST");
-    //Human player2("Test2");
-    //std::unique_ptr<Dealer> player = std::make_unique<Dealer>();
-    //std::unique_ptr<Human> player2 = std::make_unique<Human>();
 
-    
-    
-    Dealer dealer("croupier");
 
-    
-    
+
+    char choice = '0';
+    int liczba = 1;
     Table table;
-        
-    table.add_player(0, "AI Player1");
-    table.add_player(0, "AI Player2");
-    table.add_player(0, "AI Player3");
-    table.add_player(0, "AI Player4");
-    table.add_player(0, "AI Player5");
-    table.add_player(1, "Human player 1");
-    table.add_player(1, "Human player 2");
-    table.add_player(1, "Human player 3");
-    
-    table.show_players();
-    table.remove_player(3);
-    table.show_players();
+   
+    while (choice != '9')
+    {
+        system("cls");
+        std::cout << "Menu is shown " <<liczba <<"timnes" << std::endl;
+        liczba++;
+        std::cout << "Hello lets play in blackjack" << std::endl;
+        std::cout << "What do You want to do" << std::endl;
+        std::cout << "1. Add Human player" << std::endl;
+        std::cout << "2. Add AI player" << std::endl;
+        std::cout << "3. See players" << std::endl;
+        std::cout << "4. Remove player" << std::endl;
+        std::cout << "5. Play" << std::endl;
+        std::cout << "9. Exit" << std::endl;
+        std::cin >> choice;
+        choice_msg(&choice);
 
-    std::cout<<"First round";
-    table.run();
-    std::cout<<"Second round";
-    table.run();
+        std::string name;
+
+        switch (choice)
+        {
+        case '1':
+            std::cout << "Please give name for player" << std::endl;
+            std::cin >> name;
+            table.add_player(1, name);
+
+            break;
+        case '2':
+            std::cout << "Please give name for player" << std::endl;
+            std::cin >> name;
+            table.add_player(0, name);
+
+            break;
+
+        case '3':
+            table.show_players();
+            std::cout << "Press any key" << std::endl;
+            _getch();
+            break;
+
+        case '4':
+            table.show_players();
+            std::cout << "Which player should be removed?" << std::endl;
+            int id;
+            std::cin >> id;
+            table.remove_player(id);
+
+            break;
+
+        case '5':
+            table.run();
+            break;
+
+        case '9':
+            std::cout << "We leave the game" << std::endl;
+            Sleep(1000);
+            break;
+
+        default:
+            std::cout << "There is no option, try again" << std::endl;
+
+
+            break;
+        }
+    }
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+        
+    
+    
+   
    
     
     
