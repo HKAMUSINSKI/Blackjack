@@ -14,10 +14,20 @@ void choice_msg(char* choice)
 
 int main()
 {
+    Human test;
 
-   
+    
+    std::unique_ptr<Card> c3 = std::make_unique<Card>("10 Clubs", 10);
+    test.take_card(std::move(c3));
+    std::cout << " power of players hand" << test.power_hand() << std::endl;
+    _getch();
 
-
+    std::unique_ptr<Card> c1 = std::make_unique<Card>("Ace Clubs", 11);
+    test.take_card(std::move(c1));
+    std::unique_ptr<Card> c2 = std::make_unique<Card>("Ace Clubs", 11);
+    test.take_card(std::move(c2));
+    std::cout << " power of players hand" << test.power_hand() << std::endl;
+    _getch();
 
     char choice = '0';
     int liczba = 1;

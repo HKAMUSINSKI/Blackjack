@@ -11,14 +11,24 @@ void Player::count_hand()
 	
 	hand_power +=hand.back()->getValue();
 	
-	/* TODO change vaLue of ACE during game
-	for (const auto& i : hand)
-	{
-		std::string name=i->getName();
-		if (name.compare(0, 3, "Ace"))
-	}
 
-	*/
+	if (hand_power > 21)
+	{
+		hand_power = 0;
+		for (const auto& i : hand)
+		{
+
+			if ((i->getValue()) == 11)
+			{
+				i->setValue(1);
+				std::cout << "From now I will count first ACE as 1" << std::endl;
+			}
+			hand_power += i->getValue();
+		}
+		
+
+	}
+	
 }
 
 
