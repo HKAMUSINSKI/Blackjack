@@ -10,7 +10,15 @@ void Table::add_player(int type, std::string name)
 
 void Table::remove_player(int type)
 {
-	player.erase(player.begin() + type);
+	if (type<=player.size())
+		player.erase(player.begin() + type);
+	else
+	{
+		std::cout << "Are You Crazy?  We do not have player with this ID " << std::endl;
+		std::cout << "Press any key" << std::endl;
+		_getch();
+	}
+
 }
 
 void Table::show_players()
@@ -71,7 +79,7 @@ void Table::run()
 			{
 				std::cout << "Busted: " <<i->power_hand() <<std::endl;
 				choice = 's';
-				Sleep(1000);
+				Sleep(200);
 			}
 			system("cls");
 

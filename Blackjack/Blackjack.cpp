@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Table.h"
 #include <memory>
+#include <CONIO.H>
 
 void choice_msg(char* choice)
 {
@@ -31,7 +32,9 @@ int main()
         std::cout << "4. Remove player" << std::endl;
         std::cout << "5. Play" << std::endl;
         std::cout << "9. Exit" << std::endl;
-        std::cin >> choice;
+        
+        choice =_getch();
+        
         choice_msg(&choice);
 
         std::string name;
@@ -40,21 +43,21 @@ int main()
         {
         case '1':
             std::cout << "Please give name for player" << std::endl;
-            std::cin >> name;
+            std::getline(std::cin, name);
             table.add_player(1, name);
 
             break;
         case '2':
             std::cout << "Please give name for player" << std::endl;
-            std::cin >> name;
+            std::getline(std::cin, name);
             table.add_player(0, name);
 
             break;
 
         case '3':
             table.show_players();
-            std::cout << "Press any key" << std::endl;
-            _getch();
+            system("pause");
+            
             break;
 
         case '4':
@@ -62,8 +65,9 @@ int main()
             std::cout << "Which player should be removed?" << std::endl;
             int id;
             std::cin >> id;
+            std::cin.ignore(10000, '\n');
             table.remove_player(id);
-
+            
             break;
 
         case '5':
